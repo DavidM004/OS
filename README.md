@@ -1,2 +1,4 @@
 # OS
-Davit Manukyan
+
+David Manukyan
+2 kurs, 210xumb
