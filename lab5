@@ -1,0 +1,79 @@
+#!/bin/bash
+
+#question1
+str="Hello"
+echo $str2           # Արդյունք՝ str2
+echo ${str}2         # Արդյունք՝ Hello2
+
+
+#question2
+echo $((5 ** 2 * 4 / 10))
+
+#question3
+echo "The balance for user $USER is: $5.00"        # Արդյունք՝ The balance for user USERNAME is: .00
+echo "The balance for user $USER is: \$5.00"       # Արդյունք՝ The balance for user USERNAME is: $5.00
+
+#question4
+echo '$USER $((2 + 2)) $(ls)'       # Արդյունք՝ $USER $((2 + 2)) $(ls)
+echo "$USER $((2 + 2)) $(ls)"       # Արդյունք՝ USERNAME 4 file1 file2 ...
+
+#question5
+current_dir=$(pwd)
+num_files=$(ls -l | grep -c "^-")
+cat <<EOF
+Current directory: $current_dir
+Number of files: $num_files
+EOF
+
+#question6
+sum_numbers() {
+  result=$(( $1 + $2 ))
+  echo "Sum of $1 and $2 is: $result"
+}
+
+sum_numbers 5 10
+
+#question7
+count_files() {
+  directory=$1
+  file_count=$(ls -l $directory | grep -c '^-' )
+  echo "Number of files in $directory: $file_count"
+}
+
+count_files "/path/to/directory"
+
+
+#question8
+filename="testfile.txt"
+
+if [ -r $filename ] && [ -w $filename ]; then
+  echo "The file $filename has read and write permissions."
+else
+  echo "The file $filename does not have read and write permissions."
+fi
+
+
+#question9
+max_number() {
+  if [ $1 -gt $2 ]; then
+    echo "$1 is greater than $2"
+  elif [ $1 -lt $2 ]; then
+    echo "$2 is greater than $1"
+  else
+    echo "Both numbers are equal"
+  fi
+}
+
+max_number 8 12
+
+
+#question10
+check_odd_even() {
+  if [ $1 % 2 -eq 0 ]; then
+    echo "$1 is an even number."
+  else
+    echo "$1 is an odd number."
+  fi
+}
+
+check_odd_even 7
