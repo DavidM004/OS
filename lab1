@@ -1,1 +1,36 @@
-#
+#question1
+mkdir lab1
+cd lab1
+touch file.txt file1.txt file2.txt file3.txt
+mkdir dir1 dir2
+
+#question2
+ls *.txt  # Ցուցադրում է  բոլոր ֆայլերը, որոնց անվանումը վերջանում է .txt սիմվոլներով
+ls * .txt  # Կանչում է ls հրամանը, բայց * .txt-ի համար չունի ոչինչ, քանի որ *-ը չի սկսվում բացատրում։
+
+#question3
+ls f????*.txt
+
+#question4
+ls file[0-9]*.txt
+
+#question5
+ls *[a-z1-2].txt
+
+#question6
+cp /etc/passwd lab1/
+
+#question7
+mv passwd new
+mv new dir1/
+mv dir1/new dir2/
+
+#question8
+mv dir2 dir3
+mv dir3 dir1/
+
+#question9
+mv dir3/new lab1/
+
+#question10
+rm -r lab1
