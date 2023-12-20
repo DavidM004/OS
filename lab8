@@ -1,0 +1,156 @@
+#!/bin/bash
+
+#question1
+while true; do
+    echo -n "Enter a number in the range [0, 3]: "
+    read input
+
+    case $input in
+        0)
+            echo "Exiting the script."
+            break
+            ;;
+        1)
+            echo "Files in /home/student:"
+            ls /home/student
+            ;;
+        2)
+            echo "Number of text files in /home/student:"
+            find /home/student -type f -exec file {} + | grep "text" | wc -l
+            ;;
+        3)
+            echo "Working directory:"
+            pwd
+            ;;
+        *)
+            echo "Invalid input. Try again."
+            ;;
+    esac
+done
+
+
+#question2
+echo -n "Enter the name of a month: "
+read month
+
+days=0
+
+case $month in
+    "January" | "March" | "May" | "July" | "August" | "October" | "December")
+        days=31
+        ;;
+    "April" | "June" | "September" | "November")
+        days=30
+        ;;
+    "February")
+        days=28
+        ;;
+    *)
+        echo "Invalid month name."
+        exit 1
+        ;;
+esac
+
+echo "$month has $days days."
+
+
+#question3
+echo -n "Enter the first number: "
+read num1
+
+echo -n "Enter an operator (+, -, *, /, **): "
+read operator
+
+echo -n "Enter the second number: "
+read num2
+
+case $operator in
+    "+")
+        result=$((num1 + num2))
+        ;;
+    "-")
+        result=$((num1 - num2))
+        ;;
+    "*")
+        result=$((num1 * num2))
+        ;;
+    "/")
+        result=$((num1 / num2))
+        ;;
+    "**")
+        result=$((num1 ** num2))
+        ;;
+    *)
+        echo "Invalid operator."
+        exit 1
+        ;;
+esac
+
+echo "Result: $result"
+
+
+#question4
+if [ -r "$1" ]; then
+    cat "$1"
+else
+    echo "Error: File does not exist or is not readable."
+fi
+
+
+#question5
+if [ -e "$1" ] && [ -r "$1" ]; then
+    cat "$1" > "$2"
+    echo "Content of $1 copied to $2."
+else
+    echo "Error: Source file does not exist or is not readable."
+fi
+
+
+#question6
+echo -n "Enter the first number: "
+read num1
+
+echo -n "Enter the second number: "
+read num2
+
+sum=$((num1 + num2))
+echo "Sum: $sum"
+
+
+#question7
+sum=0
+
+for num in "$@"; do
+    sum=$((sum + num))
+done
+
+echo "Sum: $sum"
+
+
+#question8
+for arg in "$@"; do
+	echo "Argument: $arg"
+done
+
+
+#question9
+sum=0
+
+for num in "$@"; do
+    sum=$((sum + num))
+done
+
+echo "Sum: $sum"
+
+
+#question10
+sum=0
+
+while [ "$#" -gt 0 ]; do
+    if [ $(( $1 % 2 )) -eq 0 ]; then
+        sum=$((sum + $1))
+    fi
+    shift
+done
+
+echo "Sum of even numbers: $sum"
