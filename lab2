@@ -1,0 +1,36 @@
+#question1
+cat > file1: Ստեղծում է file1 ֆայլը ու թույլ է տալիս մուտքագրել տեքստը՝ Ctrl+D-ն սեղմելով։
+cat file1: Կարդում է file1 ֆայլը եւ արտածում իր պարունակությունը։
+cat < file1: Կարդում է file1 ֆայլի պարունակությունը եւ արտածում այդ պարունակությունը։ Այս դեպքում հայտնի չէ տողի մուտքագրման համար։
+
+#question2
+echo "Content for file1.txt" > file1.txt
+echo "Content for file2.txt" > file2.txt
+echo "Content for file3.txt" > file3.txt
+cat file1.txt file2.txt file3.txt > final.txt
+
+#question3
+ls /home/student | grep -c -e ".txt"
+
+#question4
+cat file1.txt file2.txt file3.txt | sort > sorted_files.txt
+
+#question5
+ls -lSh /home/student | head -n 15
+
+#question6
+ls /home/student > /home/student/ls.txt
+
+#question7
+echo "secret text" | tr 'A-Za-z' 'N-ZA-Mn-za-m' > encrypted.txt
+
+#question8
+echo "Student’s home directory is /home/student." > home.txt
+sed -i 's/{home_dir}/\/home\/student/g' home.txt
+
+#question9
+echo -e "Line 1\nLine 2\nLine 3\nLine 4\nLine 5" > file4.txt
+sed -n '2,4p' file4.txt
+
+#question10
+sed '2,4d' file4.txt -i
