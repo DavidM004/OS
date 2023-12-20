@@ -1,0 +1,97 @@
+#!/bin/bash
+
+#question1
+read -p "Մուտքագրեք թիվը: " num
+
+if [[ $num -gt 0 ]]; then
+  echo "Թիվը դրական է։"
+elif [[ $num -lt 0 ]]; then
+  echo "Թիվը բացասական է։"
+else
+  echo "Թիվը հավասար է 0։"
+fi
+
+#question2
+read -p "Մուտքագրեք թիվը: " num
+
+if ((num>0)); then
+  echo "Թիվը դրական է։"
+elif ((num < 0)); then
+  echo "Թիվը բացասական է։"
+else
+	echo "Թիվը հավասար է 0։"
+fi
+
+#question3
+read -p "Մուտքագրեք թիվը: " num
+
+if ((num % 2 == 0)) || ((num % 3 == 0)) || ((num % 5 == 0)); then
+  echo "Թիվը 2-ի, 3-ի կամ 5-ի բազմապատիկ է։"
+else
+  echo "Թիվը 2-ի, 3-ի կամ 5-ի բազմապատիկ չէ։"
+fi
+
+#question4
+read -p "Մուտքագրեք թիվը: " num
+
+if ((num % 2 == 0)) && ((num % 3 == 0)) && ((num % 5 == 0)); then
+  echo "Թիվը 2-ի, 3-ի և 5-ի բազմապատիկ է։"
+else
+  echo "Թիվը 2-ի, 3-ի և 5-ի բազմապատիկ չէ։"
+fi
+
+#question5
+touch new_file.txt
+chmod +rwx new_file.txt
+
+#question6
+[ -d dir ] || mkdir dir
+
+#question7
+read -p "Մուտքագրեք թիվը: " num
+min_range=25
+max_range=30
+
+if ((num >= min_range && num <= max_range)); then
+  echo "Թիվը գտնվում է $min_range-$max_range միջակայքում։"
+else
+  echo "Թիվը չգտնվում $min_range-$max_range միջակայքում։"
+fi
+
+#question8
+read -s -p "Մուտքագրեք բառը: " word
+if [[ $word == "Secret" ]]; then
+  echo -e "\nՃիշտ գաղտնաբառ։"
+else
+  echo -e "\nՍխալ գաղտնաբառ։"
+fi
+
+#question9
+read -p "Մուտքագրեք ֆայլի անունը: " filename
+
+if [[ "$filename" =~ ^[a-zA-Z0-9\-\_\.]+$ ]]; then
+  touch "$filename"
+  echo "Ֆայլը $filename անունով ստեղծվել է։"
+else
+  echo "Սխալ ֆայլի անուն։"
+fi
+
+#question10
+read -p "Մուտքագրեք թիվը: " num1
+read -p "Մուտքագրեք գործողությունը (+, -, *, /, **): " operator
+read -p "Մուտքագրեք այլ թիվ: " num2
+
+case $operator in
+  +)
+    result=$((num1 + num2))
+    ;;
+  -)
+    result=$((num1 - num2))
+    ;;
+  *)
+    echo "Սխալ գործողություն։"
+    exit 1
+    ;;
+esac
+
+echo "Գործողությունը $result է։"
