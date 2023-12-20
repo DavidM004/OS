@@ -1,0 +1,41 @@
+#question1
+touch file.txt
+chmod 744 file.txt
+
+#question2
+chmod +x file.txt
+
+#question3
+chmod o-rwx file.txt
+
+#question4
+chmod 600 file.txt
+
+#question5
+mkdir dir
+touch dir/file.txt
+chmod 644 dir
+
+#question6
+touch dir/file1.txt dir/file2.txt
+chmod 764 dir/*
+
+#question7
+umask 0137
+
+#question8
+umask 0022
+
+#question9
+echo '#!/bin/bash' > script.sh
+echo 'ls /home/student' >> script.sh
+chmod 504 script.sh
+./script.sh
+
+#question10
+mkdir ~/bin
+mv myscript.sh ~/bin/
+echo 'export PATH=$PATH:~/bin' >> ~/.bashrc
+source ~/.bashrc
+myscript.sh
+
