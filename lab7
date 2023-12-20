@@ -1,0 +1,110 @@
+#!/bin/bash
+
+#question1
+number=0
+
+while [ $number -le 20 ]
+do
+  if [ $((number % 2)) -eq 0 ]; then
+    echo $number
+  fi
+  ((number++))
+done
+
+
+#question2
+number=0
+
+until [ $number -gt 20 ]
+do
+  if [ $((number % 2)) -eq 0 ]; then
+    echo $number
+  fi
+  ((number++))
+done
+
+
+#question3
+index=0
+
+while true
+do
+  echo $index
+  ((index++))
+  if [ $index -gt 1000 ]; then
+    break
+  fi
+done
+
+
+#question4
+for ((number=0; number<=20; number+=2))
+do
+  echo $number
+done
+
+#question5
+while true
+do
+  echo -n "Enter an integer number, or enter q to quit: "
+  read input
+
+  if [ "$input" = "q" ]; then
+    break
+  fi
+
+  echo "The double of $input is $((input * 2))"
+done
+
+
+#question6
+for file in /home/student/*
+do
+  echo $(basename "$file")
+done
+
+
+#question7
+for ((number=0; number<=30; number+=3))
+do
+  echo $number
+done
+
+
+#question8
+for file in /home/student/*
+do
+  echo $(basename "$file")
+done
+
+
+#question9
+for file in "$@"
+do
+  if [ -e "$file" ]; then
+    echo "Shortest word in $file: $(awk 'BEGIN {min=255} {if(length($0)<min){min=length($0);word=$0}} END {print word}' "$file")"
+    echo "Longest word in $file: $(awk 'BEGIN {max=0} {if(length($0)>max){max=length($0);word=$0}} END {print word}' "$file")"
+  else
+    echo "File $file does not exist."
+  fi
+done
+
+
+#question10
+for file in "$@"
+do
+  if [ -e "$file" ]; then
+    if [ -r "$file" ]; then
+      echo "$file can be read."
+    else
+      echo "$file cannot be read."
+    fi
+  else
+    echo "File $file does not exist."
+  fi
+done
+
+
+
+
+
